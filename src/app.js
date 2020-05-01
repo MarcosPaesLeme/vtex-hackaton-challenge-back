@@ -1,5 +1,3 @@
-global.SALT_KEY = 'hjkaskhshuduqwyoueqy-17829873qwjkaksyd-iqiwuey8137d826';
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');

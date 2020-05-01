@@ -48,7 +48,7 @@ exports.registerNewOrdered = async (req, res) => {
         }
       }
     })
-      .lean();
+    .lean();
 
     const coordinates = await CoordinatesService.getDistanceInfo(user, companiesNear);
 

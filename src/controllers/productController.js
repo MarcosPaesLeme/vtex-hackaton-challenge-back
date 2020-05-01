@@ -5,10 +5,6 @@ const CompanyModel = require('../models/companyModel');
 
 exports.getProducts = async (req, res) => {
   try {
-    const companyId = req.params.companyId;
-
-    if (!companyId) res.status(400).send({ message: 'Missing parameters'});
-
     const products = await ProductModel.find();
 
     return res.status(201).send(products);
