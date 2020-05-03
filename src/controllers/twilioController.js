@@ -15,3 +15,24 @@ exports.createTwilioRoom = async (req, res) => {
     res.status(400).send({ message: err });
   }
 }
+
+exports.getTwilioRoom = async (req, res) => {
+  try {
+    
+    const room = req.params.room;
+
+    console.log('room', room);
+
+    const rooms = await TwilioService.getRooms(room);
+
+    console.log(rooms);
+
+    res.status(201).send(rooms)
+  } catch (err) {
+    res.status(400).send({ message: err });
+  }
+}
+
+exports.authToken = async (req, res) => {
+  return await TwilioService.authToken();
+}
