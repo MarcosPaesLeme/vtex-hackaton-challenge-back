@@ -2,9 +2,10 @@
 
 const assistantModel = require('../models/assistantModel');
 
-exports.getAssistent = async (req, res) => {
+exports.getAssistents = async (req, res) => {
   try {
-        //DO THE LOGIC
+        const assistants = await assistantModel.find();
+        res.status(201).send(assistants);
 
   } catch(err) {
     res.status(400).send({ message: err});
