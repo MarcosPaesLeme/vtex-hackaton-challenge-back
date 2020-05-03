@@ -1,5 +1,6 @@
 'use strict'
 const TwilioService = require('../services/twilio');
+const UserModel = require('../models/userModel');
 
 exports.createTwilioRoom = async (req, res) => {
   try {
@@ -31,9 +32,16 @@ exports.getTwilioRoom = async (req, res) => {
 
 exports.authToken = async (req, res) => {
   try {
-  const token = await TwilioService.authToken();
+  
+  const userName = await UserModel.findOne({ cpf: '98680261050' }).select('name').lean();
 
-  res.status(201).send(token)
+  const token = await TwilioService.getAccessRoom(userName.name);
+
+  res.status(201).send({
+    identity: userName,
+    room: `${userName.name}-room`,
+    token
+  })
 } catch (err) {
   res.status(400).send({ message: err });
 }

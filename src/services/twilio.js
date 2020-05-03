@@ -21,7 +21,7 @@ exports.getAccessRoom = async function (user_identity, room) {
     token.identity = user_identity;
 
     const grant = new VideoGrant();
-    grant.room = room;
+    grant.room = `${user_identity}-room`;
     token.addGrant(grant);
 
     return token.toJwt();
@@ -35,7 +35,7 @@ exports.createRoom = async function(user_identity, room) {
   try {
     const authToken = await this.getAccessRoom(user_identity, room);
 
-    const client = require('twilio')(TWILIO_ACCOUNT_SID, AUTH_TOKEN);
+    const client = require('twilio')(TWILIO_ACCOUNT_SID, authToken);
 
     return await client.video.rooms.create({uniqueName: room})
                   .then(room => {
@@ -65,7 +65,9 @@ exports.getRooms = async function(room) {
 
 exports.authToken = async function() {
   try {
-    return await AUTH_TOKEN;
+      const authToken = await this.getAccessRoom(user_identity, room);
+
+      return authToken;
   } catch(err) {
     console.log(err)
   }
