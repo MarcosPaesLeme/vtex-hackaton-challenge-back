@@ -7,7 +7,7 @@ const schema = new Schema({
         required: true
     },
     lastName: {
-      type: Schema.Types.ObjectId,
+      type: String,
       ref: 'Unit'
     },
     picture: {

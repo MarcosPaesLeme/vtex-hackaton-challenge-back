@@ -26,7 +26,7 @@ exports.createAssistant = async (req, res) => {
     res.status(201).send({ message: "Assistant Created!!" })
     
   } catch (error) {
-    
+    res.status(400).send({ message: error});
   }
 }
 
