@@ -25,7 +25,8 @@
     "moment": "^2.25.1",
     "mongoose": "^5.9.11",
     "requests": "^0.3.0",
-    "twilio": "^3.43.0"
+    "twilio": "^3.43.0",
+    "twilio-video": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
