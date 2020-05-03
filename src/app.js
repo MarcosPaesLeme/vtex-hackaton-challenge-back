@@ -8,6 +8,7 @@ const usersRoute = require('./routes/userRoutes');
 const companyRoutes = require('./routes/companyRoutes');
 const orderedRoutes = require('./routes/orderedRoutes');
 const unitRoutes = require('./routes/unitRoutes');
+const twilioRoutes = require('./routes/twilioRoutes');
 
 app.use(cors({
     origin: '*',
@@ -27,5 +28,6 @@ app.use('/user', usersRoute);
 app.use('/company', companyRoutes);
 app.use('/ordered', orderedRoutes);
 app.use('/unit', unitRoutes)
+app.use('/twilio', twilioRoutes);
 
 module.exports = app;
