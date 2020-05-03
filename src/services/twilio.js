@@ -65,7 +65,7 @@ exports.getRooms = async function(room) {
 
 exports.authToken = async function() {
   try {
-    return AUTH_TOKEN;
+    return await AUTH_TOKEN;
   } catch(err) {
     console.log(err)
   }
